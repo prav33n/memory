@@ -1,0 +1,299 @@
+@CHARSET "UTF-8";
+/*
+CSS style sheet for the application. 
+*/
+@media ( min-width : 720px) {
+	.card,.card-reset {
+		width: 100px;
+		height: 100px;
+	}
+	
+	.card-selected {
+		width: 100px;
+		height: 100px;
+		box-shadow: 0 0 25px rgba(0, 255, 0, 1), inset 0 0 20px
+			rgba(0, 255, 0, 1);
+	}
+	
+	.card-hidden {
+	visibility: hidden;
+	}
+	.card-back,.card-back-active,.card-front,.card-front-active {
+		border-radius: 10px;
+		-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 1.0);
+		-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 1.0);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 1.0);
+	}
+	.card-focused {
+		box-shadow: inset 0 0 10px rgba(0, 255, 0, 1);
+	}
+	
+	#gameboard {
+		width: 500px;
+		height: 500px;
+		box-shadow: 0 0 5px;
+	}
+	#card0,#card4,#card8,#card12 {
+		left: 20px;
+		position: absolute;
+	}
+	#card1,#card5,#card9,#card13 {
+		left: 140px;
+		position: absolute;
+	}
+	#card2,#card6,#card10,#card14 {
+		left: 260px;
+		position: absolute;
+	}
+	#card3,#card7,#card11,#card15 {
+		left: 380px;
+		position: absolute;
+	}
+	#card0,#card1,#card2,#card3 {
+		top: 20px;
+	}
+	#card4,#card5,#card6,#card7 {
+		top: 140px;
+	}
+	#card8,#card9,#card10,#card11 {
+		top: 260px;
+	}
+	#card12,#card13,#card14,#card15 {
+		top: 380px;
+	}
+}
+
+#popup{
+	position:absolute;
+	background:#FFF;
+	padding:10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	width:auto;
+	height:auto;
+	z-index:9999;
+	left:250px;
+	top:250px;
+	}
+
+.popuphidden {
+	visibility: hidden;
+}
+
+.popupvisible {
+	visibility: visible;
+	position:absolute;
+	background:#FFF;
+	padding:10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	width:auto;
+	height:auto;
+	z-index:9999;
+	left:250px;
+	top:250px;
+}
+
+body {
+	cursor:none;
+	text-align: center;
+	background-image: url(../images/background.png);
+	background-repeat: repeat-x;
+	width: 720px;
+	height: 576px;
+	overflow:hidden;
+}
+
+#logoimage {
+	width: 150px;
+	height: 90px;
+	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+}
+
+#content {
+	border-radius: 10px;
+	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+	text-align: center;
+	padding-left: 25px;
+	padding-top:35px;
+	width: 700px;
+	height: 530px;
+	display: block;
+}
+
+#sidemenu {
+	position: relative;
+	float: right;
+	width: 200px;
+	height: 500px;
+}
+
+#gameboard {
+	cursor: not-allowed;
+	float: left;
+	position: relative;
+	margin: 0px auto;
+}
+
+#reset {
+	position: absolute;
+	bottom: 3px;
+	font-size:20px;
+	right: 20%;
+}
+
+/* style extracted from Bootstrap */
+.resetbutton {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb75b;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #62c462, #51a351);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #51a351;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.resetbutton:focus {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #da4f49;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+  border-color: #bd362f #bd362f #802420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #bd362f;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	/*background-image: url(../images/card_bg.gif);*/
+
+}
+
+#scoreview{
+	background-color: white;
+	width:110px;
+	height:100px;
+	font-weight:bold;
+	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+	display: inline-block;
+	padding: 20px;
+	
+}
+
+#scoreview #moveslabel, #status #movesvalue{
+	display: inline-block;
+	padding: 2px 5px 2px 5px;
+	
+}
+
+
+.card, .card-reset {
+	position: fixed;
+}
+
+.card-back, .card-back-active {
+	width: inherit;
+	height: inherit;
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(../images/card_bg.gif);
+	-webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    -webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+    -o-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.card-back-active {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+}
+
+.card-front, .card-front-active {
+	width: inherit;
+	height: inherit;
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+    -o-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.card-front-active {
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+}
+
+.card-reset {
+	-webkit-transform: rotateY(720deg);
+	-moz-transform: rotateY(720deg);
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+    -o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-webkit-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.card-reset > .card-front {
+	background-image: url(../images/card_bg.gif);
+	-webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+}
