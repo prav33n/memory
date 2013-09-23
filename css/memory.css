@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 /*
-CSS style sheet for the application. 
+CSS style sheet for the memory application. 
 */
-@media ( min-width : 720px) {
-	.card,.card-reset {
+@media ( min-width : 720px) { /* activate when min screen width is 720px used for responsive applications*/
+	.card,.card-reset {  /* define the size of each card*/
 		width: 100px;
 		height: 100px;
 	}
@@ -12,13 +12,13 @@ CSS style sheet for the application.
 		width: 100px;
 		height: 100px;
 		box-shadow: 0 0 25px rgba(0, 255, 0, 1), inset 0 0 20px
-			rgba(0, 255, 0, 1);
+			rgba(0, 255, 0, 1); /*sets a green glow around the selected element*/
 	}
 	
 	.card-hidden {
 	visibility: hidden;
 	}
-	.card-back,.card-back-active,.card-front,.card-front-active {
+	.card-back,.card-back-active,.card-front,.card-front-active { /*style for the active card elements front and back*/
 		border-radius: 10px;
 		-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 1.0);
 		-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 1.0);
@@ -28,12 +28,12 @@ CSS style sheet for the application.
 		box-shadow: inset 0 0 10px rgba(0, 255, 0, 1);
 	}
 	
-	#gameboard {
+	#gameboard { /*style for the game board elements*/
 		width: 500px;
 		height: 500px;
 		box-shadow: 0 0 5px;
 	}
-	#card0,#card4,#card8,#card12 {
+	#card0,#card4,#card8,#card12 {  /*define the postion for each card in the game board*/
 		left: 20px;
 		position: absolute;
 	}
@@ -63,8 +63,9 @@ CSS style sheet for the application.
 	}
 }
 
-#popup{
+#popup{ /*style defenition for the pop up box, absolute position defined using left and right*/
 	position:absolute;
+	font-weight:bold;
 	background:#FFF;
 	padding:10px;
 	border-radius: 10px;
@@ -85,6 +86,7 @@ CSS style sheet for the application.
 .popupvisible {
 	visibility: visible;
 	position:absolute;
+	font-weight:bold;
 	background:#FFF;
 	padding:10px;
 	border-radius: 10px;
@@ -109,7 +111,7 @@ body {
 }
 
 #logoimage {
-	width: 150px;
+	width: 170px;
 	height: 90px;
 	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
 	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
@@ -150,65 +152,53 @@ body {
 	right: 20%;
 }
 
-/* style extracted from Bootstrap */
+/* style extracted from Bootstrap plugin */
 .resetbutton {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #5bb75b;
-  background-image: -moz-linear-gradient(top, #62c462, #51a351);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -moz-linear-gradient(top, #62c462, #51a351); /*gives gradient backgorund color for the buttons*/
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351)); 
   background-image: -webkit-linear-gradient(top, #62c462, #51a351);
   background-image: -o-linear-gradient(top, #62c462, #51a351);
   background-image: linear-gradient(to bottom, #62c462, #51a351);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
   border-color: #51a351 #51a351 #387038;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #51a351;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
+ }
 
 .resetbutton:focus {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #da4f49;
-  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f); 
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
   background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #bd362f;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	/*background-image: url(../images/card_bg.gif);*/
-
 }
 
 #scoreview{
 	background-color: white;
-	width:110px;
-	height:100px;
+	text-align:center;
+	font-size : 24px;
+	font-style:italic;
+	width:150px;
+	height:125px;
 	font-weight:bold;
 	-moz-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
 	-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.9);
 	box-shadow: 0 2px 10px rgba(0,0,0,0.9);
 	display: inline-block;
-	padding: 20px;
+	padding: 10px;
 	
 }
 
-#scoreview #moveslabel, #status #movesvalue{
-	display: inline-block;
-	padding: 2px 5px 2px 5px;
-	
-}
+
+
 
 
 .card, .card-reset {
@@ -255,11 +245,11 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	-webkit-transform: rotateY(-180deg);
+	-webkit-transform: rotateY(-180deg); /*rotate the card by 180 degree counter clockwise direction along y-axis*/
 	-moz-transform: rotateY(-180deg);
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
-    -o-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out; /*wait 2 second before transition to the new style*/
 	-ms-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
 	-webkit-transition: all .2s ease-in-out;
@@ -274,11 +264,11 @@ body {
 }
 
 .card-reset {
-	-webkit-transform: rotateY(720deg);
+	-webkit-transform: rotateY(720deg); /*rotate the card in a circular motion (360+360) direction along y-axis*/
 	-moz-transform: rotateY(720deg);
-	-webkit-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d; /*preserve the child elements position*/
 	-moz-transform-style: preserve-3d;
-    -o-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out; 
 	-ms-transition: all 1s ease-in-out;
 	-moz-transition: all 2s ease-in-out;
 	-webkit-transition: all 1s ease-in-out;

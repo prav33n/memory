@@ -17,7 +17,7 @@ var points = 0;
 var moves = 0;
 var start = 0;
 var loop = 0;
-var increment;
+var increment,timer;
 
 function setup() {
 	document.getElementById("startpopup").setAttribute("class","popupvisible");
@@ -36,7 +36,7 @@ function setup() {
 
 function createGameboard() {
 
-	$.ajax({
+	$.ajax({  //ajax request to get colours data from the php script
 		type : 'GET',
 		dataType : "json",
 		crossDomain : true,
@@ -67,7 +67,8 @@ function createGameboard() {
 	}
 	cards[0].setAttribute("class", "card-selected");
 	current = cards[0];
-	document.body.addEventListener("keydown", getKeyCode, false); // ADD EVENTLISTER OT GRAB KEYPRESS EVENT, KEYDOWN IS SUPPORTED IN BOTH CHROME AND FIREFOX BROWSER
+	document.body.addEventListener("keydown", getKeyCode, false);// ADD EVENTLISTER OT GRAB KEYPRESS EVENT, KEYDOWN IS SUPPORTED IN BOTH CHROME AND FIREFOX BROWSER
+	start = 1;
 }
 
 /*******************************************************************************
@@ -90,7 +91,7 @@ function flipCard() {
 		flipped[selected++] = card;
 	}
 
-	if (flipped.length == 2) { //BLOCK TO CHECK IF 2 CARDS ARE SELCTED AND IF THE BACKGROUND MATCH EACH OTHER
+	if (flipped.length == 2) { //BLOCK TO CHECK IF 2 CARDS ARE SELCTED AND THE BACKGROUND MATCH EACH OTHER
 	
 		if (flipped[0].lastChild.style.backgroundColor == flipped[1].lastChild.style.backgroundColor) {
 			//console.log("matched");
@@ -138,12 +139,12 @@ function flipCard() {
 		+ "<br> Points :" + points;
 	}
 	
-	if (pairsFound == (numCards / 2)) {
+	if (pairsFound == (numCards / 2)) {  //if all the cards in the gameboard  is matched stop timer and show message 
 		//console.log("success");
 		document.getElementById("popup").setAttribute("class","popupvisible");
-		clearInterval(function(){countuptimer()});
+		clearInterval(timer);
 		document.getElementById("message").innerHTML = "You Won in "
-			+ moves + " moves! <br> Your Score :" + points+"<br> Your Time : "+document.getElementById("timer").innerHTML;
+			+ moves + " moves! <br> Your Score :" + points+"<br> Your Time : "+document.getElementById("timer").innerHTML+"<br> Press Enter to Play Again";
 	}
 }
 
@@ -166,6 +167,7 @@ function closemessage(event) {
 
 function resetboard(event) {
 	if(event.keyCode==13){
+	clearInterval(timer);
 	pairs = [];
 	selected = 0;
 	pairsFound = 0;
@@ -177,10 +179,6 @@ function resetboard(event) {
 	document.getElementById("popup").setAttribute("class", "popuphidden"); 
 	document.getElementById("resetbutton").blur();
 	document.getElementById("confirm").blur();
-	start = 0;
-	setTimeout(function() {
-		setInterval(function(){countuptimer()},1000);
-	}, 3000);
 	}
 }
 
@@ -193,6 +191,7 @@ function resetGameboard() {
 	resetCard(0, pairs);
 	setTimeout(function() {  //SET THE FOCUS TO THE FIRST CARD IN THE GAME BOARD
 		cards[0].setAttribute("class", "card-selected");
+		start = 1;
 	}, 3000);
 }
 
@@ -254,6 +253,10 @@ function getKeyCode(e) {
 		console.log(flipped.length);
 		if (flippedcount == 0 && flipped.length <= 1)  //ACTIVATE CLICK ONLY WHEN LESS THAN 2 CARDS ARE SELECTED
 			current.click();
+		if(start == 1){
+			timer=setInterval(function(){countuptimer()},1000);
+			start =0;
+		}
 		break;
 	}
 }
@@ -277,7 +280,6 @@ function moveposition(increment){
 		current = document.getElementById("card" + newindex);
 		var cnumber = parseInt(current.getAttribute("cnumber"));
 		var flipped = parseInt(current.getAttribute("flipped"));
-		//console.log(cnumber+"//"+increment+"//"+flipped);
 		if (flipped == -1){ //IF THE CARDS ARE MATCHED, SKIP TO THE NEXT AVAILABLE CARD
 			current.setAttribute("class", "card-matched"); 
 			//console.log(increment);
@@ -302,7 +304,13 @@ function countuptimer(){ //TIMER FUNCTION TO CALCULATE THE TOTAL GAME TIME.
 		}
 	else 
 		seconds++;
+	if(seconds < 10 && mins < 10)
+	document.getElementById("timer").innerHTML = "0"+mins+":0"+seconds;
+	else if(mins < 10)
+	document.getElementById("timer").innerHTML = "0"+mins+":"+seconds;
+	else 
 	document.getElementById("timer").innerHTML = mins+":"+seconds;
+	
 }
 
 
@@ -311,7 +319,7 @@ if(event.keyCode==13){
 	document.getElementById("startpopup").setAttribute("class","popuphidden");
 	document.getElementById("startconfirm").blur();
 	createGameboard();
-	setInterval(function(){countuptimer()},1000);
+	
 }
 
 }
